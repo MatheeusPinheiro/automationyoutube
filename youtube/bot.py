@@ -8,7 +8,29 @@ from botcity.maestro import *
 # Disable errors if we are not connected to Maestro
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
+
+#pyautogui
+import pyautogui
+
 class Bot(WebBot):
+
+
+    def searchForro(self):
+        try:
+            
+            pyautogui.click(428,97, duration=2)
+
+            self.wait(400)
+            self.paste('Os melhores forró de Manaus')
+
+            self.wait(200)
+            pyautogui.click(941,100, duration=1)
+
+            self.wait(2000)
+            pyautogui.click(424,506, duration=2)
+        
+        except Exception as ex:
+           print(f'Erro no elemento {ex}')
 
     def action(self, execution=None):
         
@@ -26,12 +48,12 @@ class Bot(WebBot):
         self.browse("https://www.youtube.com.br")
 
         self.maximize_window()
-
+        self.wait(4000)
         # Implement here your logic...
-        
+        self.searchForro()
 
         # Wait 3 seconds before closing
-        self.wait(3000)
+        self.wait(4000000)
 
         # Finish and clean up the Web Browser
         # You MUST invoke the stop_browser to avoid
